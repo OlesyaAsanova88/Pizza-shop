@@ -1,0 +1,164 @@
+{
+    "products": [
+        {
+            "id": 0,
+            "imgUrl": "https://media.dodostatic.net/image/r:292x292/11EEFB595A197C24BA932A0AD1144AFB.avif",
+            "name": "Креветки со сладким чили",
+            "types": [0, 1],
+            "price": 545,
+            "sizes": [26, 30, 40],
+            "caregory": 0,
+            "raiting": 8
+        },
+        {
+            "id": 1,
+            "imgUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D61BB2BD856BD5DFD71FB7D4210.avif",
+            "name": "Пицца из половинок",
+            "types": [0, 1],
+            "price": 505,
+            "sizes": [26, 30, 40],
+            "caregory": 0,
+            "raiting": 5
+        },
+        {
+            "id": 2,
+            "imgUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
+            "name": "Сырная",
+            "types": [0, 1],
+            "price": 445,
+            "sizes": [26, 30, 40],
+            "caregory": 0,
+            "raiting": 4
+        },
+        {
+            "id": 3,
+            "imgUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D612FC7B7FCA5BE822752BEE1E5.avif",
+            "name": "Пепперони фреш",
+            "types": [0],
+            "price": 529,
+            "sizes": [26, 40],
+            "caregory": 0,
+            "raiting": 6
+        },
+        {
+            "id": 4,
+            "imgUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D614CBE0530B7234B6D7A6E5F8E.avif",
+            "name": "Двойной цыпленок",
+            "types": [0, 1],
+            "price": 489,
+            "sizes": [26, 30, 40],
+            "caregory": 0,
+            "raiting": 7
+        },
+        {
+            "id": 5,
+            "imgUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D60FDA22358AC33C6A44EB093A2.avif",
+            "name": "Ветчина и сыр",
+            "types": [1],
+            "price": 499,
+            "sizes": [26, 30, 40],
+            "caregory": 0,
+            "raiting": 6
+        },
+        {
+            "id": 6,
+            "imgUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D61706D472F9A5D71EB94149304.avif",
+            "name": "Чоризо фреш",
+            "types": [0, 1],
+            "price": 550,
+            "sizes": [26, 30, 40],
+            "caregory": 0,
+            "raiting": 6
+        },
+        {
+            "id": 7,
+            "imgUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D6175C10773BFE36E56D48DF7E3.avif",
+            "name": "Пицца Жюльен",
+            "types": [0, 1],
+            "price": 499,
+            "sizes": [26, 30, 40],
+            "caregory": 0,
+            "raiting": 6
+        },
+        {
+            "id": 8,
+            "imgUrl": "https://media.dodostatic.net/image/r:292x292/11EEF45D5CD88B939DA8A1E5F9DF03BB.avif",
+            "name": "Баварская",
+            "types": [1],
+            "price": 499,
+            "sizes": [26, 30, 40],
+            "caregory": 0,
+            "raiting": 6
+        },
+        {
+            "id": 9,
+            "imgUrl": "https://media.dodostatic.net/image/r:292x292/11EEE24316D49CCFA979EBAB4534A60D.avif",
+            "name": "Додо Микс",
+            "types": [0, 1],
+            "price": 499,
+            "sizes": [26, 30, 40],
+            "caregory": 0,
+            "raiting": 9
+        },
+        {
+            "id": 10,
+            "imgUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D613B84A5DBB4C1C50FB9583B7E.avif",
+            "name": "Песто",
+            "types": [0],
+            "price": 499,
+            "sizes": [26, 30, 40],
+            "caregory": 0,
+            "raiting": 8
+        },
+        {
+            "id": 11,
+            "imgUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D61389AB51A8F648A0DBA5B1689.avif",
+            "name": "Карбонара",
+            "types": [0, 1],
+            "price": 549,
+            "sizes": [26, 30, 40],
+            "caregory": 0,
+            "raiting": 8
+        },
+        {
+            "id": 12,
+            "imgUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D6108E3A1C9952CD3A7F39A4D02.avif",
+            "name": "Мясная",
+            "types": [0, 1],
+            "price": 549,
+            "sizes": [26, 30, 40],
+            "caregory": 0,
+            "raiting": 6
+        },
+        {
+            "id": 13,
+            "imgUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D61698827EE9B8DB6D0AEC53410.avif",
+            "name": "Бургер-пицца",
+            "types": [1],
+            "price": 449,
+            "sizes": [26, 30, 40],
+            "caregory": 0,
+            "raiting": 7
+        },
+        {
+            "id": 14,
+            "imgUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D610E8BBB248F31270BE742B4BD.avif",
+            "name": "Сырный цыпленок",
+            "types": [0, 1],
+            "price": 499,
+            "sizes": [26, 30, 40],
+            "caregory": 0,
+            "raiting": 8
+        },
+        {
+            "id": 15,
+            "imgUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D6101F670D6AA756B1C989E0489.avif",
+            "name": "Додо",
+            "types": [0, 1],
+            "price": 649,
+            "sizes": [26, 30, 40],
+            "caregory": 0,
+            "raiting": 9
+        }
+    ]
+}
