@@ -1,0 +1,22 @@
+.infoBlock {
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.infoIcon {
+    font-size: 64px;
+}
+
+.infoTitle {
+    //background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border-bottom: 1px solid orange;
+    //box-shadow: 0 0 5px orange;
+}
+.infoTitle:hover {
+    box-shadow: 0 0 10px orange;
+}
