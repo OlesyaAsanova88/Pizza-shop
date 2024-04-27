@@ -28,6 +28,7 @@ export default function CreatePizza() {
 			.then((res) => res.json())
 			.then((json) => setProducts(json));
 		setIsLoading(false);
+		//window.scrollTo(0, 0);
 	}, []);
 
 	console.log(products);
