@@ -1,0 +1,28 @@
+/* Общие стили для скроллбара */
+::-webkit-scrollbar {
+	width: 6px; /* Ширина скроллбара */
+	height: 6px; /* Высота скроллбара */
+}
+
+/* Цвет трека (фона) скроллбара */
+::-webkit-scrollbar-track {
+	background-color: #f8f2e2;
+}
+
+/* Цвет хэндла (бегунка) скроллбара */
+::-webkit-scrollbar-thumb {
+	background-color: #f6db99;
+	border-radius: 6px; /* Закругление углов хэндла */
+}
+
+/* Цвет хэндла при наведении */
+::-webkit-scrollbar-thumb:hover {
+	background-color: #f6db99;
+}
+
+/* Изменение цвета скроллбара в Firefox */
+::-moz-scrollbar {
+	width: 10px;
+	height: 28px;
+	background-color: #f8efd6;
+}

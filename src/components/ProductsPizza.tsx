@@ -1,9 +1,8 @@
 import Categories from './Categories';
 import Sort from './Sort';
-//import { ItemPizza } from './ItemPizza';
 import { useState, useEffect } from 'react';
 import Sceleton from '@components/Sceleton';
-import { ItemPizza } from './ItemPizza';
+import { CardPizza } from './CardPizza';
 //import {products} from '@src/assets/db.json'
 
 interface Product {
@@ -48,7 +47,7 @@ export default function CreatePizza() {
 							{isLoading
 								? [...new Array(8)].map((_, index) => <Sceleton key={index} />)
 								: products?.length &&
-								  products.map((product) => <ItemPizza key={product.id} {...product} />)}
+								  products.map((product) => <CardPizza key={product.id} {...product} />)}
 						</div>
 					</div>
 				</div>
