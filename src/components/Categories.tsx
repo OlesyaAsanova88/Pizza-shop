@@ -1,21 +1,29 @@
-import { useState } from 'react';
+//import { useState } from 'react';
 
-export default function Categories() {
-	const [tabCategories, setTabCategories] = useState(0);
+import { FC } from 'react';
 
-	const activeCategory = (index: number) => {
-		setTabCategories(index);
-	};
+interface Props {
+	value: number;
+	onClickCategory: (n: number) => void;
+}
 
-	const categories = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
+const Categories: FC<Props> = ({ value, onClickCategory }) => {
+	//const [tabCategories, setTabCategories] = useState(value);
+
+	// const activeCategory = (index: number) => {
+	// 	setTabCategories(index);
+	// };
+
+	const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 	return (
 		<div className="categories">
 			<ul>
-				{categories.map((category, index) => (
+				{categories.map((category, i) => (
 					<li
 						key={category}
-						onClick={() => activeCategory(index)}
-						className={tabCategories === index ? 'active' : ''}
+						// onClick={() => activeCategory(index)}
+						onClick={() => onClickCategory(i)}
+						className={value === i ? 'active' : ''}
 					>
 						{category}
 					</li>
@@ -23,4 +31,6 @@ export default function Categories() {
 			</ul>
 		</div>
 	);
-}
+};
+
+export default Categories;
