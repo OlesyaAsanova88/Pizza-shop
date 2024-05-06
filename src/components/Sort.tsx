@@ -3,11 +3,11 @@ import ArrowSortSvg from '@src/assets/svg/ArrowSortSvg';
 
 interface SortItem {
 	name: string;
-	sortsortProperty: string;
+	sortProperty: string;
 }
 interface Props {
 	sortValue: SortItem;
-	onClickSort: (sortItem: SortItem) => void;
+	onClickSort: (sortType: SortItem) => void;
 }
 
 const Sort: FC<Props> = ({ sortValue, onClickSort }) => {
@@ -19,8 +19,8 @@ const Sort: FC<Props> = ({ sortValue, onClickSort }) => {
 	];
 	//const sortName = sortList[sortValue].name;
 
-	const selectedHendler = (selectedSort: SortItem) => {
-		onClickSort(selectedSort);
+	const selectedHendler = (i: SortItem) => {
+		onClickSort(i);
 		setOpen(false);
 	};
 
@@ -35,7 +35,7 @@ const Sort: FC<Props> = ({ sortValue, onClickSort }) => {
 				<div className="sort__popup">
 					<ul>
 						{sortList.map((obj: SortItem) => (
-							<li onClick={() => selectedHendler(obj)} className={sortValue.sortsortProperty === obj.sortsortProperty ? 'active' : ''} key={obj.name}>
+							<li onClick={() => selectedHendler(obj)} className={sortValue.sortProperty === obj.sortProperty ? 'active' : ''} key={obj.name}>
 								{obj.name}
 							</li>
 						))}

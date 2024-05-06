@@ -6,18 +6,13 @@ import { CardPizza } from './CardPizza';
 import { Product } from '@src/types/Product';
 //import {products} from '@src/assets/db.json'
 
-interface SortItem {
-	name: string;
-	sortsortProperty: string;
-}
-
 type Loading = boolean;
 
 //настроить сервер , исп-ть .env(скрытое окружение),
 
 export default function ProductsPizza() {
 	const [products, setProducts] = useState<Product[] | null>([]);
-	const [isLoading, setIsLoading] = useState<Loading>(true);
+	const [isLoading, setIsLoading] = useState<Loading>(false);
 
 	const [categoryId, setCategoryId] = useState(0);
 	const [sortType, setSortType] = useState({
@@ -27,11 +22,17 @@ export default function ProductsPizza() {
 
 	useEffect(() => {
 		setIsLoading(true);
-		const url =
-			categoryId !== 0
-				? `https://66276664b625bf088c08362b.mockapi.io/products?category=${categoryId}`
-				: 'https://66276664b625bf088c08362b.mockapi.io/products';
-		fetch(url)
+
+		const sortBy = sortType.sortProperty;
+		const category = categoryId > 0 ? `category=${categoryId}` : '';
+
+		// const url =
+		// 	categoryId !== 0
+		// 		? `https://66276664b625bf088c08362b.mockapi.io/products?category=${categoryId}`
+		// 		: 'https://66276664b625bf088c08362b.mockapi.io/products';
+
+		fetch(`https://66276664b625bf088c08362b.mockapi.io/products?${category}&sortBy=${sortBy}`)
+			// fetch(url)
 			.then((res) => {
 				if (!res.ok) {
 					throw new Error('Failed to fetch products');
@@ -47,6 +48,7 @@ export default function ProductsPizza() {
 			.finally(() => {
 				setIsLoading(false);
 			});
+		console.log('productsUseEffect');
 	}, [categoryId, sortType]);
 
 	console.log(products);
@@ -58,7 +60,7 @@ export default function ProductsPizza() {
 					<div className="container">
 						<div className="content__top">
 							<Categories value={categoryId} onClickCategory={(i: number) => setCategoryId(i)} />
-							<Sort sortValue={sortType} onClickSort={(sortItem: SortItem) => setSortType(sortItem)} />
+							<Sort sortValue={sortType} onClickSort={(i) => setSortType(i)} />
 						</div>
 
 						<h2 className="content__title">Все пиццы</h2>

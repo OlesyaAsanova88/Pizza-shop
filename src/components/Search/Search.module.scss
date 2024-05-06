@@ -1,0 +1,11 @@
+.input {
+	min-width: 300px;
+	padding: 10px 25px;
+	border: 1px solid #fff;
+	outline: none;
+	border-radius: 4px;
+}
+
+.input:focus {
+	border: 1px solid orange;
+}
