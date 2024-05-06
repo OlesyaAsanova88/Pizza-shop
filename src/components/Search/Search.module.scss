@@ -1,3 +1,7 @@
+.block {
+	position: relative;
+}
+
 .input {
 	min-width: 300px;
 	padding: 10px 25px;
@@ -8,4 +12,15 @@
 
 .input:focus {
 	border: 1px solid orange;
+}
+
+.icon {
+	position: absolute;
+	top: 8px;
+	right: 10px;
+	z-index: 99;
+	opacity: 0.6;
+}
+.icon:hover {
+	opacity: 0.8;
 }
