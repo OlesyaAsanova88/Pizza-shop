@@ -1,6 +1,6 @@
 import Categories from './Categories';
 import Sort from './Sort';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FC } from 'react';
 import Sceleton from '@components/Sceleton';
 import { CardPizza } from './CardPizza';
 import { Product } from '@src/types/Product';
@@ -8,9 +8,11 @@ import { Product } from '@src/types/Product';
 
 type Loading = boolean;
 
-//настроить сервер , исп-ть .env(скрытое окружение),
+interface Props {
+	searchValue: string;
+}
 
-export default function ProductsPizza() {
+const ProductsPizza: FC<Props> = ({ searchValue }) => {
 	const [products, setProducts] = useState<Product[] | null>([]);
 	const [isLoading, setIsLoading] = useState<Loading>(false);
 
@@ -53,6 +55,20 @@ export default function ProductsPizza() {
 
 	console.log(products);
 
+	const items =
+		products &&
+		products
+			.filter((product) => {
+				if (product.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())) {
+					return true;
+				}
+
+				return false;
+			})
+			?.map((product) => <CardPizza key={product.id} {...product} />);
+
+	const skeletons = [...new Array(8)].map((_, index) => <Sceleton key={index} />);
+
 	return (
 		<>
 			<div className="wrapper">
@@ -64,19 +80,12 @@ export default function ProductsPizza() {
 						</div>
 
 						<h2 className="content__title">Все пиццы</h2>
-						<div className="content__items">
-							{isLoading
-								? [...new Array(8)].map((_, index) => <Sceleton key={index} />)
-								: products && products?.map((product) => <CardPizza key={product.id} {...product} />)}
-						</div>
+						<div className="content__items">{isLoading ? skeletons : items}</div>
 					</div>
 				</div>
 			</div>
 		</>
 	);
-}
+};
 
-// {products?.length &&
-// 	products.map((product) =>
-// 		 <ItemPizza key={product.id} {...product} />
-// 	)}
+export default ProductsPizza;
