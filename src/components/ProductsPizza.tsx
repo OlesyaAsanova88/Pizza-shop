@@ -4,6 +4,8 @@ import { useState, useEffect, FC } from 'react';
 import Sceleton from '@components/Sceleton';
 import { CardPizza } from './CardPizza';
 import { Product } from '@src/types/Product';
+import Pagination from './Pagination';
+
 //import {products} from '@src/assets/db.json'
 
 type Loading = boolean;
@@ -22,6 +24,8 @@ const ProductsPizza: FC<Props> = ({ searchValue }) => {
 		sortProperty: 'raiting',
 	});
 
+	const [currentPage, setCurrentPage] = useState(0);
+
 	useEffect(() => {
 		setIsLoading(true);
 
@@ -33,7 +37,9 @@ const ProductsPizza: FC<Props> = ({ searchValue }) => {
 		// 		? `https://66276664b625bf088c08362b.mockapi.io/products?category=${categoryId}`
 		// 		: 'https://66276664b625bf088c08362b.mockapi.io/products';
 
-		fetch(`https://66276664b625bf088c08362b.mockapi.io/products?${category}&sortBy=${sortBy}`)
+		fetch(
+			`https://66276664b625bf088c08362b.mockapi.io/products?page=${currentPage}&limit=6&${category}&sortBy=${sortBy}`,
+		)
 			// fetch(url)
 			.then((res) => {
 				if (!res.ok) {
@@ -51,7 +57,7 @@ const ProductsPizza: FC<Props> = ({ searchValue }) => {
 				setIsLoading(false);
 			});
 		console.log('productsUseEffect');
-	}, [categoryId, sortType]);
+	}, [categoryId, sortType, currentPage]);
 
 	console.log(products);
 
@@ -83,6 +89,8 @@ const ProductsPizza: FC<Props> = ({ searchValue }) => {
 						<div className="content__items">{isLoading ? skeletons : items}</div>
 					</div>
 				</div>
+
+				<Pagination onChangePage={(number) => setCurrentPage(number)} />
 			</div>
 		</>
 	);

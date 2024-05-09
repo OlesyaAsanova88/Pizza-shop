@@ -1,0 +1,32 @@
+.block {
+	display: flex;
+	gap: 10px;
+	width: 100%;
+	justify-content: center;
+	padding: 20px;
+	font-size: 18px;
+	font-weight: 600;
+
+	li {
+		a {
+			padding: 5px 12px;
+			border: 1px solid #e86c3b;
+			border-radius: 100%;
+			cursor: pointer;
+			color: #e86c3b;
+
+			&:hover {
+				background-color: #e86c3b;
+				color: #fff;
+			}
+		}
+	}
+}
+
+:global {
+	.selected a {
+		background: #f6db99;
+		border-radius: 100%;
+		color: #fff;
+	}
+}
