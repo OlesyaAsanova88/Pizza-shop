@@ -4,12 +4,7 @@ import BoxSvg from '../assets/svg/BoxSvg';
 import Search from './Search/Search';
 import { FC } from 'react';
 
-interface Search {
-	searchValue: string;
-	setSearchValue: (s: string) => void;
-}
-
-const Header: FC<Search> = ({ searchValue, setSearchValue }) => {
+const Header: FC = () => {
 	return (
 		<div className="header">
 			<div className="container">
@@ -22,7 +17,7 @@ const Header: FC<Search> = ({ searchValue, setSearchValue }) => {
 						</div>
 					</div>
 				</Link>
-				<Search searchValue={searchValue} setSearchValue={setSearchValue} />
+				<Search />
 				<div className="header__cart">
 					<Link to="/cart" className="button button--cart">
 						<span>520 ₽</span>

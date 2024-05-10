@@ -5,8 +5,8 @@ interface Props {
 	searchValue: string;
 }
 
-const Home: FC<Props> = ({ searchValue }) => {
-	return <ProductsPizza searchValue={searchValue} />;
+const Home: FC<Props> = () => {
+	return <ProductsPizza />;
 };
 
 export default Home;

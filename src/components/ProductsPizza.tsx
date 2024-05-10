@@ -1,11 +1,11 @@
 import Categories from './Categories';
 import Sort from './Sort';
-import { useState, useEffect, FC } from 'react';
+import { useState, useEffect, FC, useContext } from 'react';
 import Sceleton from '@components/Sceleton';
 import { CardPizza } from './CardPizza';
 import { Product } from '@src/types/Product';
 import Pagination from './Pagination';
-
+import { SearchContext } from '@src/App/App';
 //import {products} from '@src/assets/db.json'
 
 type Loading = boolean;
@@ -14,7 +14,8 @@ interface Props {
 	searchValue: string;
 }
 
-const ProductsPizza: FC<Props> = ({ searchValue }) => {
+const ProductsPizza: FC<Props> = () => {
+	const { searchValue } = useContext(SearchContext);
 	const [products, setProducts] = useState<Product[] | null>([]);
 	const [isLoading, setIsLoading] = useState<Loading>(false);
 
@@ -24,7 +25,7 @@ const ProductsPizza: FC<Props> = ({ searchValue }) => {
 		sortProperty: 'raiting',
 	});
 
-	const [currentPage, setCurrentPage] = useState(0);
+	const [currentPage, setCurrentPage] = useState(1);
 
 	useEffect(() => {
 		setIsLoading(true);
