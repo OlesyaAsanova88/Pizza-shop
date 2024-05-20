@@ -13,7 +13,7 @@ interface SearchContextProps {
 export const SearchContext = createContext<SearchContextProps | undefined>(undefined);
 
 const App: FC = () => {
-	const [searchValue, setSearchValue] = useState<string>('');
+	const [searchValue, setSearchValue] = useState('');
 
 	return (
 		<SearchContext.Provider value={{ searchValue, setSearchValue }}>

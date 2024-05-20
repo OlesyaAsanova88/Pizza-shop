@@ -1,13 +1,13 @@
-import { FC, useContext } from 'react';
+import { useContext } from 'react';
 import styles from './Search.module.scss';
 import { SearchContext } from '@src/App/App';
 
-interface Props {
-	searchValue: string;
-	setSearchValue: (s: string) => void;
-}
+// interface Props {
+// 	searchValue: string;
+// 	setSearchValue: (s: string) => void;
+// }
 
-const Search: FC<Props> = () => {
+const Search = () => {
 	const { searchValue, setSearchValue } = useContext(SearchContext);
 
 	return (
