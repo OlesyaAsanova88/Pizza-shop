@@ -5,6 +5,9 @@ import Cart from '@src/pages/Cart';
 import { Route, Routes } from 'react-router-dom';
 import NoteFaund from '@src/pages/NotFaund';
 
+// import { useSelector, useDispatch } from 'react-redux';
+// import { increment, decrement } from '@src/redux/slises/filterSlice';
+
 interface SearchContextProps {
 	searchValue: string;
 	setSearchValue: Dispatch<SetStateAction<string>>;

@@ -1,31 +1,25 @@
 //import { useState } from 'react';
 
+import { CATEGORY } from '@src/const';
+import { TCategory } from '@src/types/Filter';
 import { FC } from 'react';
 
 interface Props {
-	value: number;
-	onClickCategory: (n: number) => void;
+	value: TCategory;
+	onClickCategory: (category: TCategory) => void;
 }
 
 const Categories: FC<Props> = ({ value, onClickCategory }) => {
-	//const [tabCategories, setTabCategories] = useState(value);
-
-	// const activeCategory = (index: number) => {
-	// 	setTabCategories(index);
-	// };
-
-	const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 	return (
 		<div className="categories">
 			<ul>
-				{categories.map((category, i) => (
+				{CATEGORY.map((category) => (
 					<li
-						key={category}
-						// onClick={() => activeCategory(index)}
-						onClick={() => onClickCategory(i)}
-						className={value === i ? 'active' : ''}
+						key={category.id}
+						onClick={() => onClickCategory(category)}
+						className={value.id === category.id ? 'active' : ''}
 					>
-						{category}
+						{category.name}
 					</li>
 				))}
 			</ul>

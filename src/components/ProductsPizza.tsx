@@ -7,6 +7,9 @@ import { Product } from '@src/types/Product';
 import Pagination from './Pagination';
 import { SearchContext } from '@src/App/App';
 //import {products} from '@src/assets/db.json'
+import { useAppSelector, useAppDispatch } from '@src/App/hooks/index';
+import { setCategory } from '@src/redux/slises/filterSlice';
+import { TCategory } from '@src/types/Filter';
 
 type Loading = boolean;
 
@@ -15,11 +18,19 @@ interface Props {
 }
 
 const ProductsPizza: FC<Props> = () => {
+	const category = useAppSelector((state) => state.filter.category);
+
+	const dispatch = useAppDispatch();
+
 	const { searchValue } = useContext(SearchContext);
 	const [products, setProducts] = useState<Product[] | null>([]);
 	const [isLoading, setIsLoading] = useState<Loading>(false);
 
-	const [categoryId, setCategoryId] = useState(0);
+	const setCategoryHandler = (cat: TCategory) => {
+		dispatch(setCategory(cat));
+	};
+
+	// const [categoryId, setCategoryId] = useState(0);
 	const [sortType, setSortType] = useState({
 		name: 'популярности',
 		sortProperty: 'raiting',
@@ -31,17 +42,11 @@ const ProductsPizza: FC<Props> = () => {
 		setIsLoading(true);
 
 		const sortBy = sortType.sortProperty;
-		const category = categoryId > 0 ? `category=${categoryId}` : '';
-
-		// const url =
-		// 	categoryId !== 0
-		// 		? `https://66276664b625bf088c08362b.mockapi.io/products?category=${categoryId}`
-		// 		: 'https://66276664b625bf088c08362b.mockapi.io/products';
+		const categoryId = category.id > 0 ? `category=${category.id}` : '';
 
 		fetch(
-			`https://66276664b625bf088c08362b.mockapi.io/products?page=${currentPage}&limit=6&${category}&sortBy=${sortBy}`,
+			`https://66276664b625bf088c08362b.mockapi.io/products?page=${currentPage}&limit=6&${categoryId}&sortBy=${sortBy}`,
 		)
-			// fetch(url)
 			.then((res) => {
 				if (!res.ok) {
 					throw new Error('Failed to fetch products');
@@ -57,8 +62,7 @@ const ProductsPizza: FC<Props> = () => {
 			.finally(() => {
 				setIsLoading(false);
 			});
-		console.log('productsUseEffect');
-	}, [categoryId, sortType, currentPage]);
+	}, [category, sortType, currentPage]);
 
 	console.log(products);
 
@@ -82,7 +86,7 @@ const ProductsPizza: FC<Props> = () => {
 				<div className="content">
 					<div className="container">
 						<div className="content__top">
-							<Categories value={categoryId} onClickCategory={(i: number) => setCategoryId(i)} />
+							<Categories value={category} onClickCategory={(cat: TCategory) => setCategoryHandler(cat)} />
 							<Sort sortValue={sortType} onClickSort={(i) => setSortType(i)} />
 						</div>
 
