@@ -21,6 +21,7 @@ const ProductsPizza: FC<Props> = () => {
 	const category = useAppSelector((state) => state.filter.category);
 
 	const dispatch = useAppDispatch();
+	const sortType = useAppSelector((state) => state.filter.sort.sortProperty);
 
 	const { searchValue } = useContext(SearchContext);
 	const [products, setProducts] = useState<Product[] | null>([]);
@@ -31,17 +32,17 @@ const ProductsPizza: FC<Props> = () => {
 	};
 
 	// const [categoryId, setCategoryId] = useState(0);
-	const [sortType, setSortType] = useState({
-		name: 'популярности',
-		sortProperty: 'raiting',
-	});
+	// const [sortType, setSortType] = useState({
+	// 	name: 'популярности',
+	// 	sortProperty: 'raiting',
+	// });
 
 	const [currentPage, setCurrentPage] = useState(1);
 
 	useEffect(() => {
 		setIsLoading(true);
 
-		const sortBy = sortType.sortProperty;
+		const sortBy = sortType;
 		const categoryId = category.id > 0 ? `category=${category.id}` : '';
 
 		fetch(
@@ -64,7 +65,6 @@ const ProductsPizza: FC<Props> = () => {
 			});
 	}, [category, sortType, currentPage]);
 
-	console.log(products);
 
 	const items =
 		products &&
@@ -87,7 +87,7 @@ const ProductsPizza: FC<Props> = () => {
 					<div className="container">
 						<div className="content__top">
 							<Categories value={category} onClickCategory={(cat: TCategory) => setCategoryHandler(cat)} />
-							<Sort sortValue={sortType} onClickSort={(i) => setSortType(i)} />
+							<Sort  />
 						</div>
 
 						<h2 className="content__title">Все пиццы</h2>

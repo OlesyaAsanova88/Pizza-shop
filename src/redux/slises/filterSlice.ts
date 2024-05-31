@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { CATEGORY } from '@src/const';
-import { IFilterState, TCategory } from '@src/types/Filter';
+import { IFilterState, TCategory, TSort } from '@src/types/Filter';
 
 const initialState: IFilterState = {
 	category: CATEGORY[0],
@@ -16,12 +16,16 @@ export const filterSlice = createSlice({
 	initialState,
 	reducers: {
 		setCategory(state, action: PayloadAction<TCategory>) {
-			console.log(action);
+			
 			state.category = action.payload;
+		},
+		setSort(state, action: PayloadAction<TSort>) {
+			
+			state.sort = action.payload;
 		},
 	},
 });
 
-export const { setCategory } = filterSlice.actions;
+export const { setCategory, setSort } = filterSlice.actions;
 
 export default filterSlice.reducer;
