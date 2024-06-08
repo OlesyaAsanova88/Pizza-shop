@@ -5,6 +5,7 @@ import { IFilterState, TCategory, TSort } from '@src/types/Filter';
 
 const initialState: IFilterState = {
 	category: CATEGORY[0],
+	pageCount: 1,
 	sort: {
 		name: 'по популярности',
 		sortProperty: 'raiting',
@@ -23,9 +24,12 @@ export const filterSlice = createSlice({
 			
 			state.sort = action.payload;
 		},
+		setPageCount(state, action) {
+			state.pageCount = action.payload
+		}
 	},
 });
 
-export const { setCategory, setSort } = filterSlice.actions;
+export const { setCategory, setSort, setPageCount } = filterSlice.actions;
 
 export default filterSlice.reducer;
