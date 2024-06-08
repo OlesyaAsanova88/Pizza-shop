@@ -4,7 +4,7 @@ import ArrowSortSvg from '@src/assets/svg/ArrowSortSvg';
 import { useAppSelector, useAppDispatch } from '@src/App/hooks/index';
 import { setSort } from '@src/redux/slises/filterSlice';
 
-const sortList = [
+export const sortList = [
 	{ name: 'популярности', sortProperty: 'raiting' },
 	{ name: 'цене', sortProperty: 'price' },
 	{ name: 'алфавиту', sortProperty: 'title' },

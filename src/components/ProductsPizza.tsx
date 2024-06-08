@@ -5,14 +5,16 @@ import { useAppSelector, useAppDispatch } from '@src/App/hooks/index';
 
 import { SearchContext } from '@src/App/App';
 //import {products} from '@src/assets/db.json'
-import { setCategory, setPageCount } from '@src/redux/slises/filterSlice';
+import { setCategory, setPageCount, setFilters} from '@src/redux/slises/filterSlice';
 import { TCategory } from '@src/types/Filter';
 import Categories from './Categories';
-import Sort from './Sort';
+import Sort, { sortList } from './Sort';
 import Sceleton from '@components/Sceleton';
 import { CardPizza } from './CardPizza';
 import { Product } from '@src/types/Product';
 import Pagination from './Pagination';
+
+import { useNavigate } from 'react-router-dom';
 
 type Loading = boolean;
 
@@ -25,7 +27,8 @@ const ProductsPizza: FC<Props> = () => {
 	const sortType = useAppSelector((state) => state.filter.sort.sortProperty);
 	const pageCount = useAppSelector((state) => state.filter.pageCount);
 	const dispatch = useAppDispatch();
-	
+
+	const navigate = useNavigate();
 
 	const setCategoryHandler = (cat: TCategory) => {
 		dispatch(setCategory(cat));
@@ -34,11 +37,26 @@ const ProductsPizza: FC<Props> = () => {
 	const onChangePage = (p: number) => {
 		dispatch(setPageCount(p))
 	}
-
-	// const [currentPage, setCurrentPage] = useState(1);
+	
 	const { searchValue } = useContext(SearchContext);
 	const [products, setProducts] = useState<Product[] | null>([]);
 	const [isLoading, setIsLoading] = useState<Loading>(false);
+
+	useEffect(() => {
+		if(window.location.search) {
+			const params = qs.parse(window.location.search.substring(1))
+			console.log(params)
+
+			const sort = sortList.find(obj => obj.sortProperty === params.sortBy)
+
+			dispatch(
+				setFilters({
+					...params,
+					sort
+				})
+			)
+		}
+	}, [dispatch])
 
 	useEffect(() => {
 		setIsLoading(true);
@@ -55,12 +73,14 @@ const ProductsPizza: FC<Props> = () => {
 
 	useEffect(() => {
 		const queryString = qs.stringify({
-			categoryId:category,
+			categoryId:category.id,
 			sortBy:sortType,
 			pageCount
 		})
 		console.log(queryString)
-	}, [category, sortType, pageCount])
+
+		navigate(`?${queryString}`)
+	}, [category, sortType, pageCount,  navigate])
 
 
 	const items =
